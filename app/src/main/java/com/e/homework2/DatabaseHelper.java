@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context){
@@ -45,5 +47,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery("Select * from user where username=? and password=?" , new String[]{username,password});
         if (cursor.getCount()>0) return  true;
         else return false;
+    }
+    public Cursor SelectUsersData(){
+        SQLiteDatabase market = this.getReadableDatabase();
+        Cursor rows = market.rawQuery(
+                "SELECT firstname,lastname, username, password FROM user",null);
+        return rows;
     }
 }
