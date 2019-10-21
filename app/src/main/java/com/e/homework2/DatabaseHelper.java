@@ -3,6 +3,7 @@ package com.e.homework2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -38,5 +39,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else {
             return true;
         }
+
+    }
+    public boolean checkmail(String username){
+        SQLiteDatabase db= this.getReadableDatabase();
+        Cursor cursor= db.rawQuery("Select * from user where username=?", new String[]{username});
+        if (cursor.getCount()>0){
+            return  false;
+        }else {
+            return true;
+        }
+
     }
 }

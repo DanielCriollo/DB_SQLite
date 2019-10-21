@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    DatabaseHelper db;
+
     EditText fname, lname, uname, password, password2;
     Button signup;
 
@@ -16,30 +18,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fname=(EditText)findViewById(R.id.fname);
-        lname=(EditText)findViewById(R.id.lname);
-        uname=(EditText)findViewById(R.id.uname);
-        password=(EditText)findViewById(R.id.password);
-        password2=(EditText)findViewById(R.id.password2);
-        signup=(Button) findViewById(R.id.signup);
+        db= new DatabaseHelper(this);
+
+        fname = (EditText) findViewById(R.id.fname);
+        lname = (EditText) findViewById(R.id.lname);
+        uname = (EditText) findViewById(R.id.uname);
+        password = (EditText) findViewById(R.id.password);
+        password2 = (EditText) findViewById(R.id.password2);
+        signup = (Button) findViewById(R.id.signup);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fn =fname.getText().toString();
-                String ln =fname.getText().toString();
-                String un =fname.getText().toString();
-                String pw =fname.getText().toString();
-                String pw2 =fname.getText().toString();
-
-
-
-
+                String fn = fname.getText().toString();
+                String ln = fname.getText().toString();
+                String un = fname.getText().toString();
+                String pw = fname.getText().toString();
+                String pw2 = fname.getText().toString();
 
 
             }
         });
-
 
 
     }
