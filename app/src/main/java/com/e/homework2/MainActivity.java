@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper db;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db= new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
 
         fname = (EditText) findViewById(R.id.fname);
         lname = (EditText) findViewById(R.id.lname);
@@ -36,8 +37,29 @@ public class MainActivity extends AppCompatActivity {
                 String pw = fname.getText().toString();
                 String pw2 = fname.getText().toString();
 
+                if (fn.equals("") || ln.equals("") || un.equals("") || pw.equals("") || pw2.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (pw.equals(pw2)) {
 
+                        Boolean chkemail = db.chkemail(un);
+
+                        if (chkemail == true) {
+                            Boolean insert = db.insert(fn, ln, un, pw);
+                            if (insert == true) {
+                                Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Email all really exists", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }else {
+                        Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
             }
+
         });
 
 

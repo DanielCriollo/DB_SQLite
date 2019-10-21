@@ -1,6 +1,4 @@
 package com.e.homework2;
-
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,41 +12,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(" CREATE TABLE user  (firstname text, lastname text, username text PRIMARY KEY, password text, password2 text)");
-
+        db.execSQL(" CREATE TABLE user  (firstname text, lastname text, username text PRIMARY KEY, password text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS user");
-
     }
-    public boolean insert(String firstname, String lastname, String username, String password, String password2){
+    public boolean insert(String firstname, String lastname, String username, String password){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("firstname",firstname);
-        contentValues.put("laststname",lastname);
+        contentValues.put("lastname",lastname);
         contentValues.put("username",username);
         contentValues.put("password",password);
-        contentValues.put("password2",password2);
 
         long ins = db.insert("user", null, contentValues);
-        if (ins==-1){
-            return false;
-        }
-        else {
-            return true;
-        }
+        if (ins==-1) return false;
+
+        else  return true;
 
     }
-    public boolean checkmail(String username){
+    public boolean chkemail(String username){
         SQLiteDatabase db= this.getReadableDatabase();
         Cursor cursor= db.rawQuery("Select * from user where username=?", new String[]{username});
-        if (cursor.getCount()>0){
-            return  false;
-        }else {
-            return true;
-        }
-
+        if (cursor.getCount()>0) return  false;
+        else return true;
     }
 }
