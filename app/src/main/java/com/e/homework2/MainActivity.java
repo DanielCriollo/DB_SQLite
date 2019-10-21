@@ -2,6 +2,7 @@ package com.e.homework2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper db;
 
     EditText fname, lname, uname, password, password2;
-    Button signup;
+    Button signup, log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         password2 = (EditText) findViewById(R.id.password2);
         signup = (Button) findViewById(R.id.signup);
+        log = (Button) findViewById(R.id.log);
+
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
+            }
+        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
