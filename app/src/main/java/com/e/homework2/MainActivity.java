@@ -42,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String fn = fname.getText().toString();
-                String ln = fname.getText().toString();
-                String un = fname.getText().toString();
-                String pw = fname.getText().toString();
-                String pw2 = fname.getText().toString();
+                String ln = lname.getText().toString();
+                String un = uname.getText().toString();
+                String pw = password.getText().toString();
+                String pw2 = password2.getText().toString();
 
                 if (fn.equals("") || ln.equals("") || un.equals("") || pw.equals("") || pw2.equals("")) {
                     Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();

@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS user");
     }
     public boolean insert(String firstname, String lastname, String username, String password){
@@ -38,5 +38,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor= db.rawQuery("Select * from user where username=?", new String[]{username});
         if (cursor.getCount()>0) return  false;
         else return true;
+    }
+
+    public boolean emailpassword(String username, String password){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor= db.rawQuery("Select * from user where username=? and password=?" , new String[]{username,password});
+        if (cursor.getCount()>0) return  true;
+        else return false;
     }
 }

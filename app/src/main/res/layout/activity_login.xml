@@ -56,19 +56,32 @@
             android:textColorHint="#FFFFFF"
             android:textColorLink="#FFFFFF" />
 
-        <EditText
-            android:id="@+id/pass"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/white"
-            android:ems="10"
-            android:hint="********"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textColorLink="#FFFFFF" />
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/white"
+                android:ems="10"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:padding="8dp"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF">
+
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/login"
@@ -118,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/linkedin" />
+
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="wrap_content"
