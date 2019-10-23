@@ -54,4 +54,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "SELECT firstname,lastname, username, password FROM user",null);
         return rows;
     }
+    public void eliminar(String username){
+        SQLiteDatabase db=this.getWritableDatabase();
+
+
+
+    }
 }

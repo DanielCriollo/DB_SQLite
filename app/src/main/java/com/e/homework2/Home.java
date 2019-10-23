@@ -3,9 +3,11 @@ package com.e.homework2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class Home extends AppCompatActivity {
 
@@ -67,6 +70,7 @@ public class Home extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        Cursor cursor = db.SelectUsersData();
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
@@ -74,7 +78,8 @@ public class Home extends AppCompatActivity {
                 Toast.makeText(this, "Actualizado", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.delete:
-                Toast.makeText(this, "Eliminado", Toast.LENGTH_SHORT).show();
+
+
                 break;
             default:
                 return super.onContextItemSelected(item);
@@ -104,5 +109,37 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menuop, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.male:
+                Toast.makeText(this, "Select Male", Toast.LENGTH_SHORT).show();
+                return  true;
+            case R.id.female:
+                Toast.makeText(this, "Select Female", Toast.LENGTH_SHORT).show();
+                return  true;
+            case R.id.all:
+                Toast.makeText(this, "Select All", Toast.LENGTH_SHORT).show();
+                return  true;
+            case R.id.about:
+                Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+                return  true;
+            case R.id.logout:
+                Intent intent = new Intent(this,Login.class);
+                startActivity(intent);
+                finish();
+                return  true;
+                default:
+                    return super.onOptionsItemSelected(item);
+
+        }
+
+    }
 }
