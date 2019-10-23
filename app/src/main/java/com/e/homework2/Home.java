@@ -75,7 +75,8 @@ public class Home extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.update:
-                Toast.makeText(this, "Actualizado", Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(this,Update.class);
+                startActivity(intent);
                 break;
             case R.id.delete:
 
